@@ -1,22 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function TechList() {
   const [techs, setTechs] = useState([]);
+  const [newTech, setNewTech] = useState([]);
+
+  //ComponentDidMount - OnLoad
+  useEffect(() => {
+    const techs = localStorage.getItem("techs");
+    if (techs) {
+      setTechs(JSON.parse(techs));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("techs", JSON.stringify(techs));
+  }, [techs]);
 
   function handleAddTech() {
-    setTechs([...techs, "Node.JS"]);
+    setTechs([...techs, newTech]);
+    setNewTech("");
   }
 
   return (
-    <div>
+    <form data-testid="tech-form" onSubmit={handleAddTech}>
       <ul data-testid="tech-list">
         {techs.map(tech => (
           <li key={tech}>{tech}</li>
         ))}
       </ul>
-      <button type="button" onClick={handleAddTech}>
-        Adicionar
-      </button>
-    </div>
+      <label htmlFor="tech">Tech</label>
+      <input
+        id="tech"
+        value={newTech}
+        onChange={e => setNewTech(e.target.value)}
+      />
+      <button type="submit">Adicionar</button>
+    </form>
   );
 }
