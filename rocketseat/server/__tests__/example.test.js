@@ -1,5 +1,4 @@
 function soma(a, b) {
-  console.log(process.env.NODE_ENV);
   return a + b;
 }
 

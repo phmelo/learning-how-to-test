@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1572743685518" clover="3.2.0">
-  <project timestamp="1572743685519" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1572746428174" clover="3.2.0">
+  <project timestamp="1572746428175" name="All files">
+    <metrics statements="8" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2" elements="17" coveredelements="11" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="Users.js" path="C:\Users\phmel\dev\learning-how-to-test\rocketseat\server\src\app\models\Users.js">
+      <metrics statements="8" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <line num="1" count="2" type="cond" truecount="3" falsecount="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+    </file>
   </project>
 </coverage>
