@@ -2,7 +2,7 @@ import request from 'supertest';
 import bcrypt from 'bcryptjs';
 import app from '../../src/app';
 
-import User from '../../src/app/models/User';
+import factory from '../factories';
 import truncate from '../util/truncate';
 
 describe('User', () => {
@@ -11,9 +11,7 @@ describe('User', () => {
   });
 
   it('should encrypt user password when new a user is created', async () => {
-    const user = await User.create({
-      name: 'Paulo Henrique',
-      email: 'ph@phdev.com.br',
+    const user = await factory.create('User', {
       password: '123456',
     });
     const compareHash = await bcrypt.compare('123456', user.password_hash);
@@ -21,33 +19,24 @@ describe('User', () => {
   });
 
   it('should be able to register', async () => {
+    const user = await factory.attrs('User');
+
     const response = await request(app)
       .post('/users')
-      .send({
-        name: 'Paulo Henrique',
-        email: 'ph@phdev.com.br',
-        password: '123456',
-      });
+      .send(user);
 
     expect(response.body).toHaveProperty('id');
   });
 
   it('should not be able to register with a existing email', async () => {
+    const user = await factory.attrs('User');
     await request(app)
       .post('/users')
-      .send({
-        name: 'Paulo Henrique',
-        email: 'ph@phdev.com.br',
-        password: '123456',
-      });
+      .send(user);
 
     const response = await request(app)
       .post('/users')
-      .send({
-        name: 'Paulo Henrique',
-        email: 'ph@phdev.com.br',
-        password: '123456',
-      });
+      .send(user);
 
     expect(response.status).toBe(400);
   });
