@@ -9,6 +9,7 @@ export default function TechList() {
 
   function handleAdd() {
     setTechs([...techs, newTech]);
+    setNewTech('');
   }
 
   return (

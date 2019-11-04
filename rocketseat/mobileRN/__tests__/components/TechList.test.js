@@ -8,5 +8,6 @@ describe('TechList', () => {
     fireEvent.changeText(getByTestId('tech-input'), 'Node.js');
     fireEvent.press(getByText('Adicionar'));
     expect(getByText('Node.js')).toBeTruthy();
+    expect(getByTestId('tech-input')).toHaveProp('value', '');
   });
 });

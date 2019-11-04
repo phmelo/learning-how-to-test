@@ -17,6 +17,7 @@
     "@babel/core": "^7.6.4",
     "@babel/runtime": "^7.6.3",
     "@react-native-community/eslint-config": "^0.0.5",
+    "@testing-library/jest-native": "^3.0.2",
     "@testing-library/react-native": "^4.1.0",
     "@types/jest": "^24.0.21",
     "babel-jest": "^24.9.0",
@@ -27,6 +28,9 @@
   },
   "jest": {
     "preset": "@testing-library/react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "testMatch": [
       "**/__tests__/**/*.test.js"
     ],
